@@ -1,0 +1,13 @@
+/login_sdk/res/
+/login_sdk/login.py
+/login_sdk/build/
+config.json
+/pandora_connect/build/
+/pandora_connect/dist/
+cron_sync.sh
+favicon.png
+inclist.txt
+start.sh
+login_sdk/__pycache__/
+pandora_connect/__pycache__/
+.idea/
