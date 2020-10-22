@@ -9,20 +9,11 @@ import re
 import socket
 
 
-if os.name == 'nt':
-    import windows_utils as utils
-    
-    HOME_PATH = os.environ['USERPROFILE']
-    APP_DATA = os.environ['LOCALAPPDATA']
-    LOG_FOLDER = os.environ['TEMP']
-    
-elif os.name == 'posix':
-    import linux_utils as utils
-    
-    HOME_PATH = os.environ['HOME']
-    APP_DATA = os.environ['HOME']
-    LOG_FOLDER = '/tmp'
+import windows_utils as utils
 
+HOME_PATH = os.environ['USERPROFILE']
+APP_DATA = os.environ['LOCALAPPDATA']
+LOG_FOLDER = os.environ['TEMP']
 
 CURRENT = os.getcwd()
 RES_FOLDER = os.path.join(CURRENT, 'res')
@@ -193,7 +184,7 @@ class RdpConnect:
 
                 logging.info(f'VM id: {vm.id}, fqdn: {self.fqdn}')
 
-                if re.search('int.*\.kinef\.lcl', self.fqdn, re.IGNORECASE):
+                if re.search('int.*' + DOMAIN, self.fqdn, re.IGNORECASE):
                     self.address = (self.fqdn, self.port)
                     try:
                         self.socket.connect(self.address)
